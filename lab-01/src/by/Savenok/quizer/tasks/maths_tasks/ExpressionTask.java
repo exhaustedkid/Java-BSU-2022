@@ -1,6 +1,7 @@
-package by.Savenok.quizer.tasks;
+package by.Savenok.quizer.tasks.maths_tasks;
 
 import by.Savenok.quizer.Result;
+import by.Savenok.quizer.tasks.Task;
 
 import java.util.Objects;
 

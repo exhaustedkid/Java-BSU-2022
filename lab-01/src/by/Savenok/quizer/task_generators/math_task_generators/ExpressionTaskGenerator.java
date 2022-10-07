@@ -1,7 +1,8 @@
-package by.Savenok.quizer.task_generators;
+package by.Savenok.quizer.task_generators.math_task_generators;
 
 import by.Savenok.quizer.Randomizer;
-import by.Savenok.quizer.tasks.ExpressionTask;
+import by.Savenok.quizer.task_generators.TaskGenerator;
+import by.Savenok.quizer.tasks.maths_tasks.ExpressionTask;
 
 public class ExpressionTaskGenerator implements TaskGenerator {
     public ExpressionTaskGenerator(
@@ -30,29 +31,12 @@ public class ExpressionTaskGenerator implements TaskGenerator {
     public ExpressionTask generate() {
         int first = Randomizer.GenerateNumber(minNumber_, maxNumber_);
         int second = Randomizer.GenerateNumber(minNumber_, maxNumber_);
-        char[] enable_operators = new char[4];
-        enable_operators[0] = '0';
-        enable_operators[1] = '0';
-        enable_operators[2] = '0';
-        enable_operators[3] = '0';
-        if (generateSum_) {
-            enable_operators[0] = '+';
-        }
-        if (generateDifference_) {
-            enable_operators[1] = '-';
-        }
-        if (generateMultiplication_) {
-            enable_operators[2] = '*';
-        }
-        if (generateDivision_) {
-            enable_operators[3] = '/';
-        }
-        char operator = '0';
-        while (operator == '0') {
-            int index = Randomizer.GenerateNumber(0, 4);
-            operator = enable_operators[index];
-        }
-        return new ExpressionTask(ParseTask(first, second, operator), CalculateAnswer(first, second, operator));
+        char operator = Randomizer.GenerateOperator(generateSum_,
+                generateDifference_,
+                generateMultiplication_,
+                generateDivision_);
+        return new ExpressionTask(ParseTask(first, second, operator),
+                CalculateAnswer(first, second, operator));
     }
 
     String CalculateAnswer(int first, int second, char operator) {
