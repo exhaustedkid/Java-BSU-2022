@@ -1,3 +1,5 @@
+package by.Savenok.quizer;
+
 public class Randomizer {
     public static int GenerateNumber(int lower_bound, int upper_bound) {
         double psi = Math.random() / Math.nextDown(1.0);

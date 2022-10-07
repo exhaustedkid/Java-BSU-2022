@@ -1,3 +1,7 @@
+package by.Savenok.quizer.tasks;
+
+import by.Savenok.quizer.Result;
+
 import java.util.Objects;
 
 public class ExpressionTask implements Task {

@@ -1,5 +1,10 @@
+package by.Savenok.quizer.task_generators;
+
+import by.Savenok.quizer.Randomizer;
+import by.Savenok.quizer.tasks.ExpressionTask;
+
 public class ExpressionTaskGenerator implements TaskGenerator {
-    ExpressionTaskGenerator(
+    public ExpressionTaskGenerator(
             int minNumber,
             int maxNumber,
             boolean generateSum,

@@ -1,3 +1,8 @@
+package by.Savenok.quizer;
+
+import by.Savenok.quizer.task_generators.TaskGenerator;
+import by.Savenok.quizer.task_generators.ExpressionTaskGenerator;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;

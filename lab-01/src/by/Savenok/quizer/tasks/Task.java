@@ -1,3 +1,7 @@
+package by.Savenok.quizer.tasks;
+
+import by.Savenok.quizer.Result;
+
 public interface Task {
     /*
      @return текст задания

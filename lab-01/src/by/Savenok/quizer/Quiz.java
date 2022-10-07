@@ -1,3 +1,8 @@
+package by.Savenok.quizer;
+
+import by.Savenok.quizer.task_generators.TaskGenerator;
+import by.Savenok.quizer.tasks.Task;
+
 import java.util.Scanner;
 
 public class Quiz {
