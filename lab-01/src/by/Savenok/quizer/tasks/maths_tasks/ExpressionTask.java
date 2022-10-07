@@ -20,6 +20,9 @@ public class ExpressionTask implements Task {
             return Result.WRONG;
         }
     }
+    public String getAnswer() {
+        return answer_;
+    }
     String statement_;
     String answer_;
 }

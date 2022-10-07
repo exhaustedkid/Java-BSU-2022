@@ -77,6 +77,7 @@ public class Quiz {
         while (!isFinished()) {
             current_task_ = generator_.generate();
             System.out.print(nextTask().getText());
+            System.out.print('\n');
             String users_answer = in.nextLine();
             Result result = provideAnswer(users_answer);
             System.out.println(result.toString()); //
@@ -86,6 +87,8 @@ public class Quiz {
             }
             if (result == Result.WRONG) {
                 wrong_answers_count_++;
+                System.out.print(current_task_.getAnswer());
+                System.out.print('\n');
             }
             if (result == Result.INCORRECT_INPUT) {
                 incorrect_input_count_++;
