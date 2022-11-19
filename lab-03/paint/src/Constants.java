@@ -10,6 +10,13 @@ public class Constants {
         spray,
         text
     }
+
+    public static enum FigureFills {
+        NO,
+        EQUAL,
+        NOT_EQUAL
+    }
+
     public static final double smallSize = 1;
     public static final double middleSize = 3;
     public static final double hugeSize = 5;

@@ -2,21 +2,20 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.canvas.Canvas;
-
-
+import java.awt.*;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class View extends Application {
@@ -75,23 +74,124 @@ public class View extends Application {
 //            ((ToggleButton) tool).widthProperty();
 //            ((ToggleButton) tool).setPrefWidth(0.1);
 //            ((ToggleButton) tool).setMaxHeight(10);
-
-
         }
 
         for (Node tool : tools.getChildren()) {
             FlowPane.setMargin(tool, new Insets(0, 0, 0, 0));
         }
-//        tools.setHgap(25);
-//        tools.setVgap(0);
-//        tools.setPrefWrapLength(50);
         tools.setMaxHeight(400);
 
+        ToggleButton blackButton = new ToggleButton("black");
+        ToggleButton blueButton = new ToggleButton("blue");
+        ToggleButton greenButton = new ToggleButton("green");
+        ToggleButton redButton = new ToggleButton("red");
+        ToggleButton whiteButton = new ToggleButton("white");
+        ToggleButton yellowButton = new ToggleButton("yellow");
+
+
+        FlowPane colors = new FlowPane(
+                blackButton,
+                blueButton,
+                greenButton,
+                redButton,
+                whiteButton,
+                yellowButton);
+
+        ArrayList<ColorButton> colorButtonsWithText = new ArrayList<>();
+        for (Node color : colors.getChildren()) {
+            colorButtonsWithText.add(new ColorButton((ToggleButton) color));
+        }
+
+        colors.setOrientation(Orientation.HORIZONTAL);
+
+        for (ColorButton colorButton : colorButtonsWithText) {
+            String nameWithExtension = "/pictures/colors/" + colorButton.getColor() + ".JPG";
+            colorButton.getColorButton().setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                            .getResource(nameWithExtension))
+                    .toExternalForm()));
+            colorButton.getColorButton().setText(null);
+        }
+
+        ToggleButton smallSizeButton = new ToggleButton("small_size");
+        ToggleButton middleSizeButton = new ToggleButton("middle_size");
+        ToggleButton hugeSizeButton = new ToggleButton("huge_size");
+
+        FlowPane sizes = new FlowPane(
+                smallSizeButton,
+                middleSizeButton,
+                hugeSizeButton);
+
+        sizes.setOrientation(Orientation.VERTICAL);
+        for (Node size : sizes.getChildren()) {
+            String nameWithExtension = "/pictures/sizes/" + ((ToggleButton) size).getText() + ".JPG";
+            ((ToggleButton) size).setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                            .getResource(nameWithExtension))
+                    .toExternalForm()));
+            ((ToggleButton) size).setText(null);
+        }
+
+
+        ToggleButton noFillButton = new ToggleButton("no_fill");
+        ToggleButton currentColorFillButton = new ToggleButton("first_color_fill");
+        ToggleButton secondColorFillButton = new ToggleButton("second_color_fill");
+
+        FlowPane fills = new FlowPane(
+                noFillButton,
+                currentColorFillButton,
+                secondColorFillButton);
+
+        fills.setOrientation(Orientation.VERTICAL);
+        for (Node fill_type : fills.getChildren()) {
+            String nameWithExtension = "/pictures/fills/" + ((ToggleButton) fill_type).getText() + ".JPG";
+            ((ToggleButton) fill_type).setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                            .getResource(nameWithExtension))
+                    .toExternalForm()));
+            ((ToggleButton) fill_type).setText(null);
+        }
+
+
+        ColorSwitchButton colorSwitchButton = new ColorSwitchButton();
+
+        VBox panel = new VBox();
+        panel.setBackground(Background.fill(Color.GRAY));
+        panel.getChildren().add(tools);
+        panel.getChildren().add(colors);
+        panel.getChildren().add(sizes);
+        panel.getChildren().add(fills);
+        panel.getChildren().add(colorSwitchButton.getColorSwitcherButton());
+
+        colorSwitchButton.getColorSwitcherButton().setOnMousePressed(e -> {
+            colorSwitchButton.switchColors();
+            drawer.setCurrentColor(colorSwitchButton.getFirstColor());
+            drawer.setSecondaryColor(colorSwitchButton.getSecondColor());
+        });
+
+        for (ColorButton colorButton : colorButtonsWithText) {
+            colorButton.getColorButton().setOnMousePressed(
+                    e -> {
+                        System.out.println(colorButton.getColor());
+                        if (e.isPrimaryButtonDown()) {
+                            drawer.setCurrentColor(ColorsDecoder.Decode(colorButton.getColor()));
+                            colorSwitchButton.changeColors(colorButton.getColor(), false);
+                        } else {
+                            drawer.setSecondaryColor(ColorsDecoder.Decode(colorButton.getColor()));
+                            colorSwitchButton.changeColors(false, (colorButton.getColor()));
+                        }
+                    });
+        }
 
         BorderPane borderPane = new BorderPane();
-//        borderPane.setCenter(drawer.getCanvas());
+        drawer.getPane().setBackground(Background.fill(Color.WHITE));
         borderPane.setCenter(drawer.getPane());
-        borderPane.setLeft(tools);
+        borderPane.setLeft(panel);
+
+        smallSizeButton.setOnMousePressed(e -> drawer.setSize(Constants.smallSize));
+        middleSizeButton.setOnMousePressed(e -> drawer.setSize(Constants.middleSize));
+        hugeSizeButton.setOnMousePressed(e -> drawer.setSize(Constants.hugeSize));
+
+        noFillButton.setOnMousePressed(e -> drawer.setFigureFill(Constants.FigureFills.NO));
+        currentColorFillButton.setOnMousePressed(e -> drawer.setFigureFill(Constants.FigureFills.EQUAL));
+        secondColorFillButton.setOnMousePressed(e -> drawer.setFigureFill(Constants.FigureFills.NOT_EQUAL));
 
         brushButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.brush));
         pencilButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.pencil));
@@ -100,21 +200,13 @@ public class View extends Application {
         lineButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.line));
         rectangleButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.rectangle));
         sprayButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.spray));
-        textButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.text));
-
-
-
-//        tools.setOnMousePressed(e->{
-//            System.out.println(5);
-//            if (brushButton.isSelected()) {
-//                drawer.setTool(Constants.Tool.brush);
-//                System.out.println(30);
-//            }
-//            if (brushButton.isPressed()) {
-//                drawer.setTool(Constants.Tool.brush);
-//                System.out.println(40);
-//            }
-//        });
+        textButton.setOnMousePressed(e -> {
+            try {
+                Desktop.getDesktop().browse(new URL("https://www.youtube.com/watch?v=dQw4w9WgXcQ").toURI());
+            } catch (IOException | URISyntaxException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         Scene scene = new Scene(borderPane, Constants.windowWidth, Constants.windowHeight);
 
@@ -122,4 +214,72 @@ public class View extends Application {
         primaryStage.show();
     }
 
+    private class ColorSwitchButton {
+        public ColorSwitchButton() {
+            colorSwitcher.setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                    .getResource("/pictures/fills/black-white.JPG")).toExternalForm()));
+        }
+
+        private void RefreshPicture() {
+            colorSwitcher.setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                    .getResource("/pictures/fills/" + firstColor + "-" + secondColor + ".JPG")).toExternalForm()));
+        }
+
+        public void switchColors() {
+            String bufString = firstColor;
+            firstColor = secondColor;
+            secondColor = bufString;
+            RefreshPicture();
+        }
+
+        public void changeColors(boolean dont, String newColor) {
+            secondColor = newColor;
+            RefreshPicture();
+        }
+
+        public void changeColors(String newColor, boolean dont) {
+            firstColor = newColor;
+            RefreshPicture();
+        }
+
+        public void changeColors(String firstNewColor, String secondNewColor) {
+            firstColor = firstNewColor;
+            secondColor = secondNewColor;
+            RefreshPicture();
+        }
+
+        public ToggleButton getColorSwitcherButton() {
+            return colorSwitcher;
+        }
+
+        public Color getFirstColor() {
+            return ColorsDecoder.Decode(firstColor);
+        }
+
+        public Color getSecondColor() {
+            return ColorsDecoder.Decode(secondColor);
+        }
+
+        private final ToggleButton colorSwitcher = new ToggleButton();
+        private String firstColor = "black";
+        private String secondColor = "white";
+    }
+
+    private class ColorButton {
+        ColorButton(ToggleButton button) {
+            colorButton = button;
+            color = button.getText();
+        }
+
+        public ToggleButton getColorButton() {
+            return colorButton;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        private ToggleButton colorButton;
+        private final String color;
+    }
 }
