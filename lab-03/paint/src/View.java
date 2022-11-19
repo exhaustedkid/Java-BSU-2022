@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.canvas.GraphicsContext;
@@ -7,6 +8,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -35,7 +37,6 @@ public class View extends Application {
 
         ToggleButton brushButton = new ToggleButton("brush");
         ToggleButton circleButton = new ToggleButton("circle");
-        ToggleButton curveButton = new ToggleButton("curve");
         ToggleButton lineButton = new ToggleButton("line");
         ToggleButton pencilButton = new ToggleButton("pencil");
         ToggleButton rectangleButton = new ToggleButton("rectangle");
@@ -46,7 +47,6 @@ public class View extends Application {
         FlowPane tools = new FlowPane(
                 brushButton,
                 circleButton,
-                curveButton,
                 lineButton,
                 pencilButton,
                 rectangleButton,
@@ -56,7 +56,7 @@ public class View extends Application {
 
         tools.setOrientation(Orientation.HORIZONTAL);
 //        tools.setOrientation(Orientation.VERTICAL);
-
+//        tools.setSpacing()
 
 //        tools.setColumnHalignment(HPos.CENTER);
 //        tools.setPadding(new Insets(0.1));
@@ -69,28 +69,34 @@ public class View extends Application {
                             .getResource(nameWithExtension))
                     .toExternalForm()));
             ((ToggleButton) tool).setText(null);
+//            ((ToggleButton) tool).setScaleX(0.35);
+//            ((ToggleButton) tool).setScaleY(0.35);
+//            tool.resize(100, 100);
+//            ((ToggleButton) tool).widthProperty();
+//            ((ToggleButton) tool).setPrefWidth(0.1);
+//            ((ToggleButton) tool).setMaxHeight(10);
 
-//            ((ToggleButton) tool).setMaxHeight(1);
-//            ((ToggleButton) tool).setPrefHeight(10);
-//            ((ToggleButton) tool).setPrefWidth(10);
-//            ((ToggleButton) tool).setMaxWidth(1);
-            ((ToggleButton) tool).setScaleX(0.35);
-            ((ToggleButton) tool).setScaleY(0.35);
+
         }
-        tools.setHgap(0);
-        tools.setVgap(0);
+
+        for (Node tool : tools.getChildren()) {
+            FlowPane.setMargin(tool, new Insets(0, 0, 0, 0));
+        }
+//        tools.setHgap(25);
+//        tools.setVgap(0);
 //        tools.setPrefWrapLength(50);
         tools.setMaxHeight(400);
 
-        BorderPane pane = new BorderPane();
-        pane.setCenter(drawer.getCanvas());
-        pane.setLeft(tools);
+
+        BorderPane borderPane = new BorderPane();
+//        borderPane.setCenter(drawer.getCanvas());
+        borderPane.setCenter(drawer.getPane());
+        borderPane.setLeft(tools);
 
         brushButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.brush));
         pencilButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.pencil));
         rubButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.rub));
         circleButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.circle));
-        curveButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.curve));
         lineButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.line));
         rectangleButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.rectangle));
         sprayButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.spray));
@@ -110,7 +116,7 @@ public class View extends Application {
 //            }
 //        });
 
-        Scene scene = new Scene(pane, 1200, 800);
+        Scene scene = new Scene(borderPane, Constants.windowWidth, Constants.windowHeight);
 
         primaryStage.setScene(scene);
         primaryStage.show();
