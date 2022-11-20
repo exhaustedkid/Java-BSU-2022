@@ -10,7 +10,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -208,10 +212,21 @@ public class View extends Application {
             }
         });
 
+        JMenuBar menu = new JMenuBar();
+        menu.add(createFileMenu());
+        JFrame frame = new JFrame("Menu");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setJMenuBar(menu);
+
         Scene scene = new Scene(borderPane, Constants.windowWidth, Constants.windowHeight);
 
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    private JMenu createFileMenu()
+    {
+        return new JMenu("File");
     }
 
     private class ColorSwitchButton {

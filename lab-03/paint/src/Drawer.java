@@ -15,6 +15,7 @@ public class Drawer {
         pane.getChildren().add(paintingArea);
         paintingArea.setOnMouseDragged(e -> {
             if (currentTool == Constants.Tool.spray) {
+                graphicsContext.setFill(currentColor);
                 for (int i = 0; i < 3 * currentMultiplier; ++i) {
                     graphicsContext.fillOval(e.getX() + Math.random() * 5 * currentMultiplier, e.getY() + Math.random() * 5 * currentMultiplier, 2, 2);
                 }
@@ -34,7 +35,6 @@ public class Drawer {
                 newLayer.toFront();
                 newLayerGraphicsContext.clearRect(0, 0, Constants.paintingAreaWidth, Constants.paintingAreaHeight);
                 newLayerGraphicsContext.strokeLine(startX, startY, e.getX(), e.getY());
-                newLayer.toBack();
             } else if (currentTool == Constants.Tool.circle) {
                 newLayer.toFront();
                 newLayerGraphicsContext.clearRect(0, 0, Constants.paintingAreaWidth, Constants.paintingAreaHeight);
@@ -42,7 +42,6 @@ public class Drawer {
                         Math.min(startY, e.getY()),
                         Math.abs(startX - e.getX()),
                         Math.abs(startY - e.getY()));
-                newLayer.toBack();
             } else if (currentTool == Constants.Tool.rectangle) {
                 newLayer.toFront();
                 newLayerGraphicsContext.clearRect(0, 0, Constants.paintingAreaWidth, Constants.paintingAreaHeight);
@@ -50,11 +49,11 @@ public class Drawer {
                         Math.min(startY, e.getY()),
                         Math.abs(startX - e.getX()),
                         Math.abs(startY - e.getY()));
-                newLayer.toBack();
             }
         });
 
         paintingArea.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_PRESSED, e -> {
+            newLayer.toFront();
             graphicsContext.setStroke(currentColor);
             newLayerGraphicsContext.setStroke(currentColor);
             if (figureFill == Constants.FigureFills.EQUAL) {
@@ -80,6 +79,7 @@ public class Drawer {
             prevY = e.getY();
         });
         paintingArea.addEventHandler(MouseEvent.MOUSE_RELEASED, e -> {
+            newLayer.toBack();
             endX = e.getX();
             endY = e.getY();
             if (currentTool == Constants.Tool.line) {
