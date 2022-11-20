@@ -3,6 +3,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.control.Labeled;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -86,8 +87,6 @@ public class View extends Application {
             ChangeButtonSize(color, 0.75);
         }
 
-//        colors.setOrientation(Orientation.HORIZONTAL);
-
         for (ColorButton colorButton : colorButtonsWithText) {
             String nameWithExtension = "/pictures/colors/" + colorButton.getColor() + ".JPG";
             colorButton.getColorButton().setGraphic(new ImageView(Objects.requireNonNull(getClass()
@@ -131,6 +130,11 @@ public class View extends Application {
             ChangeButtonSize(fill_type, 0.75);
         }
 
+        ToggleButton interfacePicture = new ToggleButton();
+        interfacePicture.setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                        .getResource("pictures/painter.jpg"))
+                .toExternalForm()));
+        ChangeButtonSize(interfacePicture, 0.9);
 
         ColorSwitchButton colorSwitchButton = new ColorSwitchButton();
 
@@ -141,10 +145,11 @@ public class View extends Application {
         colors.setSpacing(30);
         sizes.setSpacing(45);
         fills.setSpacing(40);
-        fills.setPadding(new Insets(50, 25, 25, 40));
+        fills.setPadding(new Insets(50, 25, 150, 40));
         sizes.setPadding(new Insets(40, 25, 25, 40));
         colors.setPadding(new Insets(25, 25, 25, 25));
         tools.setPadding(new Insets(100, 25, 25, 25));
+        interfacePicture.setPadding(new Insets(20, 25, 25, 200));
         HBox sizesAndFills = new HBox(sizes, fills);
         sizesAndFills.setSpacing(30);
 
@@ -160,6 +165,7 @@ public class View extends Application {
         panel.getChildren().add(colors);
         panel.getChildren().add(colorSwitchButton.getColorSwitcherButton());
         panel.getChildren().add(sizesAndFills);
+        panel.getChildren().add(interfacePicture);
 
         colorSwitchButton.getColorSwitcherButton().setOnMousePressed(e -> {
             colorSwitchButton.switchColors();
