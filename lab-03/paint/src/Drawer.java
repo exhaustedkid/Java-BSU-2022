@@ -42,6 +42,10 @@ public class Drawer {
                         Math.min(startY, e.getY()),
                         Math.abs(startX - e.getX()),
                         Math.abs(startY - e.getY()));
+                newLayerGraphicsContext.fillOval(Math.min(startX, e.getX()),
+                        Math.min(startY, e.getY()),
+                        Math.abs(startX - e.getX()),
+                        Math.abs(startY - e.getY()));
             } else if (currentTool == Constants.Tool.rectangle) {
                 newLayer.toFront();
                 newLayerGraphicsContext.clearRect(0, 0, Constants.paintingAreaWidth, Constants.paintingAreaHeight);
@@ -49,19 +53,27 @@ public class Drawer {
                         Math.min(startY, e.getY()),
                         Math.abs(startX - e.getX()),
                         Math.abs(startY - e.getY()));
+                newLayerGraphicsContext.fillRect(Math.min(startX, e.getX()),
+                        Math.min(startY, e.getY()),
+                        Math.abs(startX - e.getX()),
+                        Math.abs(startY - e.getY()));
             }
         });
 
         paintingArea.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_PRESSED, e -> {
+            newLayerGraphicsContext.clearRect(0, 0, Constants.paintingAreaWidth, Constants.paintingAreaHeight);
             newLayer.toFront();
             graphicsContext.setStroke(currentColor);
             newLayerGraphicsContext.setStroke(currentColor);
             if (figureFill == Constants.FigureFills.EQUAL) {
                 graphicsContext.setFill(currentColor);
+                newLayerGraphicsContext.setFill(currentColor);
             } else if (figureFill == Constants.FigureFills.NOT_EQUAL) {
                 graphicsContext.setFill(secondaryColor);
+                newLayerGraphicsContext.setFill(secondaryColor);
             } else if (figureFill == Constants.FigureFills.NO) {
                 graphicsContext.setFill(Color.TRANSPARENT);
+                newLayerGraphicsContext.setFill(Color.TRANSPARENT);
             }
             if (currentTool == Constants.Tool.brush) {
                 graphicsContext.setLineWidth(3 * currentMultiplier);
