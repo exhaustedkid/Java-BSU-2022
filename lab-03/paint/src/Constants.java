@@ -22,6 +22,6 @@ public class Constants {
     public static final double hugeSize = 5;
     public static final double windowWidth = 1200;
     public static final double windowHeight = 800;
-    public static final double paintingAreaWidth = 600;
+    public static final double paintingAreaWidth = 1000;
     public static final double paintingAreaHeight = 800;
 }

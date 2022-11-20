@@ -10,11 +10,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -28,7 +25,7 @@ public class View extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         primaryStage.setTitle("Paint");
         InputStream iconStream = getClass().getResourceAsStream("/pictures/icon.jpg");
         assert iconStream != null;
@@ -36,7 +33,6 @@ public class View extends Application {
         primaryStage.getIcons().add(image);
 
         final Drawer drawer = new Drawer();
-
 
         ToggleButton brushButton = new ToggleButton("brush");
         ToggleButton circleButton = new ToggleButton("circle");
@@ -47,7 +43,7 @@ public class View extends Application {
         ToggleButton sprayButton = new ToggleButton("spray");
         ToggleButton textButton = new ToggleButton("text");
 
-        FlowPane tools = new FlowPane(
+        TilePane tools = new TilePane(
                 brushButton,
                 circleButton,
                 lineButton,
@@ -58,12 +54,6 @@ public class View extends Application {
                 textButton);
 
         tools.setOrientation(Orientation.HORIZONTAL);
-//        tools.setOrientation(Orientation.VERTICAL);
-//        tools.setSpacing()
-
-//        tools.setColumnHalignment(HPos.CENTER);
-//        tools.setPadding(new Insets(0.1));
-//        tools.setPrefWrapLength(10);
         for (Node tool : tools.getChildren()) {
             String pictures = "/pictures/";
             String filename = pictures.concat(((Labeled) (tool)).getText());
@@ -72,18 +62,8 @@ public class View extends Application {
                             .getResource(nameWithExtension))
                     .toExternalForm()));
             ((ToggleButton) tool).setText(null);
-//            ((ToggleButton) tool).setScaleX(0.35);
-//            ((ToggleButton) tool).setScaleY(0.35);
-//            tool.resize(100, 100);
-//            ((ToggleButton) tool).widthProperty();
-//            ((ToggleButton) tool).setPrefWidth(0.1);
-//            ((ToggleButton) tool).setMaxHeight(10);
+            ChangeButtonSize(tool, 0.5);
         }
-
-        for (Node tool : tools.getChildren()) {
-            FlowPane.setMargin(tool, new Insets(0, 0, 0, 0));
-        }
-        tools.setMaxHeight(400);
 
         ToggleButton blackButton = new ToggleButton("black");
         ToggleButton blueButton = new ToggleButton("blue");
@@ -92,8 +72,7 @@ public class View extends Application {
         ToggleButton whiteButton = new ToggleButton("white");
         ToggleButton yellowButton = new ToggleButton("yellow");
 
-
-        FlowPane colors = new FlowPane(
+        HBox colors = new HBox(
                 blackButton,
                 blueButton,
                 greenButton,
@@ -104,9 +83,10 @@ public class View extends Application {
         ArrayList<ColorButton> colorButtonsWithText = new ArrayList<>();
         for (Node color : colors.getChildren()) {
             colorButtonsWithText.add(new ColorButton((ToggleButton) color));
+            ChangeButtonSize(color, 0.75);
         }
 
-        colors.setOrientation(Orientation.HORIZONTAL);
+//        colors.setOrientation(Orientation.HORIZONTAL);
 
         for (ColorButton colorButton : colorButtonsWithText) {
             String nameWithExtension = "/pictures/colors/" + colorButton.getColor() + ".JPG";
@@ -120,49 +100,66 @@ public class View extends Application {
         ToggleButton middleSizeButton = new ToggleButton("middle_size");
         ToggleButton hugeSizeButton = new ToggleButton("huge_size");
 
-        FlowPane sizes = new FlowPane(
+        VBox sizes = new VBox(
                 smallSizeButton,
                 middleSizeButton,
                 hugeSizeButton);
 
-        sizes.setOrientation(Orientation.VERTICAL);
         for (Node size : sizes.getChildren()) {
             String nameWithExtension = "/pictures/sizes/" + ((ToggleButton) size).getText() + ".JPG";
             ((ToggleButton) size).setGraphic(new ImageView(Objects.requireNonNull(getClass()
                             .getResource(nameWithExtension))
                     .toExternalForm()));
             ((ToggleButton) size).setText(null);
+            ChangeButtonSize(size, 0.75);
         }
-
 
         ToggleButton noFillButton = new ToggleButton("no_fill");
         ToggleButton currentColorFillButton = new ToggleButton("first_color_fill");
         ToggleButton secondColorFillButton = new ToggleButton("second_color_fill");
 
-        FlowPane fills = new FlowPane(
+        VBox fills = new VBox(
                 noFillButton,
                 currentColorFillButton,
                 secondColorFillButton);
-
-        fills.setOrientation(Orientation.VERTICAL);
         for (Node fill_type : fills.getChildren()) {
-            String nameWithExtension = "/pictures/fills/" + ((ToggleButton) fill_type).getText() + ".JPG";
+            String nameWithExtension = "/pictures/fills/" + ((ToggleButton) fill_type).getText() + "_not_pressed.JPG";
             ((ToggleButton) fill_type).setGraphic(new ImageView(Objects.requireNonNull(getClass()
                             .getResource(nameWithExtension))
                     .toExternalForm()));
             ((ToggleButton) fill_type).setText(null);
+            ChangeButtonSize(fill_type, 0.75);
         }
 
 
         ColorSwitchButton colorSwitchButton = new ColorSwitchButton();
 
+        tools.setVgap(50);
+        tools.setHgap(50);
+        tools.setPrefColumns(4);
+        tools.setPrefRows(2);
+        colors.setSpacing(30);
+        sizes.setSpacing(45);
+        fills.setSpacing(40);
+        fills.setPadding(new Insets(50, 25, 25, 40));
+        sizes.setPadding(new Insets(40, 25, 25, 40));
+        colors.setPadding(new Insets(25, 25, 25, 25));
+        tools.setPadding(new Insets(100, 25, 25, 25));
+        HBox sizesAndFills = new HBox(sizes, fills);
+        sizesAndFills.setSpacing(30);
+
+        ChangeButtonSize(colorSwitchButton.getColorSwitcherButton(), 0.75);
+        colorSwitchButton.getColorSwitcherButton().setPadding(new Insets(50, 50, 50, 150));
+
         VBox panel = new VBox();
         panel.setBackground(Background.fill(Color.GRAY));
+        panel.setMaxWidth(200);
+        panel.setSpacing(30);
+        panel.setPadding(new Insets(10, 25, 10, 25));
         panel.getChildren().add(tools);
         panel.getChildren().add(colors);
-        panel.getChildren().add(sizes);
-        panel.getChildren().add(fills);
         panel.getChildren().add(colorSwitchButton.getColorSwitcherButton());
+        panel.getChildren().add(sizesAndFills);
 
         colorSwitchButton.getColorSwitcherButton().setOnMousePressed(e -> {
             colorSwitchButton.switchColors();
@@ -173,7 +170,6 @@ public class View extends Application {
         for (ColorButton colorButton : colorButtonsWithText) {
             colorButton.getColorButton().setOnMousePressed(
                     e -> {
-                        System.out.println(colorButton.getColor());
                         if (e.isPrimaryButtonDown()) {
                             drawer.setCurrentColor(ColorsDecoder.Decode(colorButton.getColor()));
                             colorSwitchButton.changeColors(colorButton.getColor(), false);
@@ -193,9 +189,42 @@ public class View extends Application {
         middleSizeButton.setOnMousePressed(e -> drawer.setSize(Constants.middleSize));
         hugeSizeButton.setOnMousePressed(e -> drawer.setSize(Constants.hugeSize));
 
-        noFillButton.setOnMousePressed(e -> drawer.setFigureFill(Constants.FigureFills.NO));
-        currentColorFillButton.setOnMousePressed(e -> drawer.setFigureFill(Constants.FigureFills.EQUAL));
-        secondColorFillButton.setOnMousePressed(e -> drawer.setFigureFill(Constants.FigureFills.NOT_EQUAL));
+        noFillButton.setOnMousePressed(e -> {
+            drawer.setFigureFill(Constants.FigureFills.NO);
+            noFillButton.setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                            .getResource("pictures/fills/no_fill_pressed.JPG"))
+                    .toExternalForm()));
+            currentColorFillButton.setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                            .getResource("pictures/fills/first_color_fill_not_pressed.JPG"))
+                    .toExternalForm()));
+            secondColorFillButton.setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                            .getResource("pictures/fills/second_color_fill_not_pressed.JPG"))
+                    .toExternalForm()));
+        });
+        currentColorFillButton.setOnMousePressed(e -> {
+            drawer.setFigureFill(Constants.FigureFills.EQUAL);
+            noFillButton.setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                            .getResource("pictures/fills/no_fill_not_pressed.JPG"))
+                    .toExternalForm()));
+            currentColorFillButton.setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                            .getResource("pictures/fills/first_color_fill_pressed.JPG"))
+                    .toExternalForm()));
+            secondColorFillButton.setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                            .getResource("pictures/fills/second_color_fill_not_pressed.JPG"))
+                    .toExternalForm()));
+        });
+        secondColorFillButton.setOnMousePressed(e -> {
+            drawer.setFigureFill(Constants.FigureFills.NOT_EQUAL);
+            noFillButton.setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                            .getResource("pictures/fills/no_fill_not_pressed.JPG"))
+                    .toExternalForm()));
+            currentColorFillButton.setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                            .getResource("pictures/fills/first_color_fill_not_pressed.JPG"))
+                    .toExternalForm()));
+            secondColorFillButton.setGraphic(new ImageView(Objects.requireNonNull(getClass()
+                            .getResource("pictures/fills/second_color_fill_pressed.JPG"))
+                    .toExternalForm()));
+        });
 
         brushButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.brush));
         pencilButton.setOnMousePressed(e -> drawer.setTool(Constants.Tool.pencil));
@@ -228,6 +257,18 @@ public class View extends Application {
     {
         return new JMenu("File");
     }
+
+    private void ChangeButtonSize(Node button, double multiplier) {
+        button.setScaleX(multiplier);
+        button.setScaleY(multiplier);
+        ((ToggleButton)button).setMaxWidth(multiplier * ((ToggleButton)button).getMaxWidth());
+        ((ToggleButton)button).setMinWidth(multiplier * ((ToggleButton)button).getMinWidth());
+        ((ToggleButton)button).setPrefWidth(multiplier * ((ToggleButton)button).getPrefWidth());
+        ((ToggleButton)button).setMaxHeight(multiplier * ((ToggleButton)button).getMaxWidth());
+        ((ToggleButton)button).setMinHeight(multiplier * ((ToggleButton)button).getMinWidth());
+        ((ToggleButton)button).setPrefHeight(multiplier * ((ToggleButton)button).getPrefWidth());
+    }
+
 
     private class ColorSwitchButton {
         public ColorSwitchButton() {
@@ -294,7 +335,7 @@ public class View extends Application {
             return color;
         }
 
-        private ToggleButton colorButton;
+        private final ToggleButton colorButton;
         private final String color;
     }
 }
