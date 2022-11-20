@@ -1,25 +1,48 @@
 import javafx.application.Application;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Labeled;
-import javafx.scene.control.Toggle;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
-
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map.Entry;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
+import javafx.scene.effect.Glow;
+import javafx.scene.effect.SepiaTone;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 public class View extends Application {
     public static void launch() {
         Application.launch();
@@ -30,8 +53,8 @@ public class View extends Application {
         primaryStage.setTitle("Paint");
         InputStream iconStream = getClass().getResourceAsStream("/pictures/icon.jpg");
         assert iconStream != null;
-        Image image = new Image(iconStream);
-        primaryStage.getIcons().add(image);
+        Image mainImage = new Image(iconStream);
+        primaryStage.getIcons().add(mainImage);
 
         final Drawer drawer = new Drawer();
 
@@ -148,7 +171,7 @@ public class View extends Application {
         fills.setPadding(new Insets(50, 25, 150, 40));
         sizes.setPadding(new Insets(40, 25, 25, 40));
         colors.setPadding(new Insets(25, 25, 25, 25));
-        tools.setPadding(new Insets(100, 25, 25, 25));
+        tools.setPadding(new Insets(50, 25, 25, 25));
         interfacePicture.setPadding(new Insets(20, 25, 25, 200));
         HBox sizesAndFills = new HBox(sizes, fills);
         sizesAndFills.setSpacing(30);
@@ -247,13 +270,50 @@ public class View extends Application {
             }
         });
 
-        JMenuBar menu = new JMenuBar();
-        menu.add(createFileMenu());
-        JFrame frame = new JFrame("Menu");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setJMenuBar(menu);
+        MenuBar menuBar = new MenuBar();
+
+        Menu menuFile = new Menu("File");
+        MenuItem save = new MenuItem("save");
+        MenuItem open = new MenuItem("open");
+        MenuItem exit = new MenuItem("close");
+        exit.setOnAction(t -> System.exit(0));
+        open.setOnAction(t -> {
+            FileChooser fileChooser = new FileChooser();
+            File file = fileChooser.showOpenDialog(borderPane.getScene().getWindow());
+                try {
+                    drawer.getPane().getChildren().add(new ImageView(file.toURI().toURL().toExternalForm()));
+                } catch (MalformedURLException e) {
+                    throw new RuntimeException(e);
+                }
+        });
+        save.setOnAction(t -> {
+            SnapshotParameters params = new SnapshotParameters();
+            params.setViewport(
+                    new Rectangle2D(
+                            borderPane.getLeft().getBoundsInLocal().getWidth(),
+                            borderPane.getTop().getBoundsInLocal().getHeight(),
+                            Constants.paintingAreaWidth - 50,
+                            Constants.paintingAreaHeight - borderPane.getTop().getBoundsInLocal().getHeight()));
+
+            WritableImage image = borderPane.snapshot(params, null);
+            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
+            BufferedImage imageRGB = new BufferedImage(
+                    bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.OPAQUE);
+            Graphics2D graphics = imageRGB.createGraphics();
+            graphics.drawImage(bufferedImage, 0, 0, null);
+            File file = new File("src/saved_images/Untitled.jpg");
+            try {
+                ImageIO.write(imageRGB, "jpg", file);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        menuFile.getItems().addAll(new SeparatorMenuItem(), open, save, exit);
+        menuBar.getMenus().addAll(menuFile);
 
         Scene scene = new Scene(borderPane, Constants.windowWidth, Constants.windowHeight);
+        ((BorderPane) scene.getRoot()).setTop(menuBar);
 
         primaryStage.setScene(scene);
         primaryStage.show();
