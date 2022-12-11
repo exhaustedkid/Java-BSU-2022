@@ -2,6 +2,7 @@ import java.io.IOException;
 
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -16,7 +17,8 @@ public class ShipsManager {
         JSONObject jObject = (JSONObject) jsonParser.parse(reader);
         JSONArray shipsJArray = (JSONArray) jObject.get("ships");
 
-        List<Ship> ships = new ArrayList<>();
+//        List<Ship> ships = new ArrayList<>();
+        List<Ship> ships = Collections.synchronizedList(new ArrayList<>());
         for (Object ship : shipsJArray) {
                 ships.add(new Ship((String) ((JSONObject)ship).get("name"), (Long) ((JSONObject)ship).get("capacity"), new ArrayList<>()));
         }
