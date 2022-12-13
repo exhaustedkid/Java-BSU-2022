@@ -19,52 +19,60 @@
 	{
 		"name": "Mayflower",
 		"capacity": 50
+	},
+	{
+		"name": "Admiral",
+		"capacity": 100
+	},
+	{
+		"name": "Vivat",
+		"capacity": 50
 	}
 ],
 	"cargos" : [
 		{
 			"cargo": "bread",
-			"count": 500
+			"count": 50
 		},
 		{
 			"cargo": "cheese",
-			"count": 300
+			"count": 80
 		},
 		{
 			"cargo": "sausage",
-			"count": 300
+			"count": 100
 		},
 		{
 			"cargo": "ketchup",
-			"count": 100
+			"count": 200
 		}
 	],
 	"hobos": [
 		{
 			"name": "Mujik",
-			"stealing_time": 3
+			"stealing_time": 3000
 		},
 		{
 			"name": "Mafioznic",
-			"stealing_time": 5
+			"stealing_time": 5000
 		},
 		{
 			"name": "Brodyaga",
-			"stealing_time": 5
+			"stealing_time": 5000
 		},
 		{
 			"name": "Vasya Brilliant",
-			"stealing_time": 2
+			"stealing_time": 2000
 		},
 		{
 			"name": "Crutch",
-			"stealing_time": 10
+			"stealing_time": 1000
 		}
 	],
 		"ingredients_count": [
           {
             "cargo": "bread",
-            "count": 20
+            "count": 10
           },
           {
             "cargo": "cheese",
@@ -72,7 +80,7 @@
           },
           {
             "cargo": "sausage",
-            "count": 15
+            "count": 10
           },
           {
             "cargo": "ketchup",

@@ -4,10 +4,10 @@ import static java.lang.Thread.sleep;
 
 public class Ship implements Runnable {
 
-    Ship(String _name, long _capacity, List<String> _cargo) {
-        name = _name;
-        capacity = _capacity;
-        cargo = _cargo;
+    Ship(String name, long capacity, Cargo cargo) {
+        this.name = name;
+        this.capacity = capacity;
+        this.cargo = cargo;
     }
 
     public String getName() {
@@ -18,17 +18,13 @@ public class Ship implements Runnable {
         return capacity;
     }
 
-    public List<String> getCargo() {
+    public Cargo getCargo() {
         return cargo;
-    }
-
-    public void Sink() {
-
     }
 
     private final String name;
     private final long capacity;
-    private final List<String> cargo;
+    private final Cargo cargo;
     private boolean ableToJoinTunnel = true;
 
     public void setAbleToJoinTunnel(boolean ableToJoinTunnel) {
@@ -37,7 +33,7 @@ public class Ship implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(Controller.getInstance().GetTimeInFormat() + " " + name + " ship started");
+        System.out.println(Controller.getInstance().GetTimeInFormat() + " " + name + " ship started with " + cargo.getName() + " " + cargo.getCount());
         try {
             SwimToTunnel();
             Controller.getInstance().AddShipToTunnel(this);
@@ -47,9 +43,16 @@ public class Ship implements Runnable {
             }
             SwimInTunnel();
             Controller.getInstance().RemoveShipFromTunnel();
+            SwimToDock();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void SwimToDock() throws InterruptedException {
+        sleep(7000);
+        System.out.println(Controller.getInstance().GetTimeInFormat() + " ship " + name + " got to dock");
+        Controller.getInstance().getDock().AddCargo(cargo);
     }
 
     private void SwimInTunnel() throws InterruptedException {

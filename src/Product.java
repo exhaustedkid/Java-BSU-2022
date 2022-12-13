@@ -1,5 +1,5 @@
 public class Product {
-    Product (String _name, int _count) {
+    Product (String _name, long _count) {
         count = _count;
         name = _name;
     }
@@ -8,10 +8,18 @@ public class Product {
         return name;
     }
 
-    public int getCount() {
+    public long getCount() {
         return count;
     }
 
-    final private int count;
+    synchronized public void DecreaseCount(long value) {
+        count -= value;
+    }
+    synchronized public void IncreaseCount(long value) {
+        count += value;
+    }
+
+
+    private long count;
     final private String name;
 }

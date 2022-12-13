@@ -3,11 +3,12 @@ import java.util.List;
 import static java.lang.Thread.sleep;
 
 public class Controller {
-    Controller(long _generatingTime) throws InterruptedException {
+    Controller(long _generatingTime) {
         generatingTime = _generatingTime;
         controller = this;
-        tunnel = new Tunnel(1);
+        tunnel = new Tunnel(2);
         timer = new Timer();
+        dock = new Dock();
     }
 
     public static Controller getInstance() {
@@ -23,20 +24,23 @@ public class Controller {
     }
 
     private void GenerateShips() throws InterruptedException {
-        for (Ship ship : ships) {
-            Thread thread = new Thread(ship);
-            thread.start();
-            sleep(generatingTime);
-        }
+            for (Ship ship : ships) {
+                Thread thread = new Thread(ship);
+                thread.start();
+                sleep(generatingTime);
+            }
     }
 
     public void setShips(List<Ship> ships) throws InterruptedException {
         this.ships = ships;
         GenerateShips();
     }
-
     synchronized public long GetTime() {
         return timer.GetCurrentTime();
+    }
+
+    public Dock getDock() {
+        return dock;
     }
 
     synchronized public String GetTimeInFormat() {
@@ -48,9 +52,5 @@ public class Controller {
     private final Tunnel tunnel;
     private final Timer timer;
     private List<Ship> ships;
-    private List<Product> enableInHarbor;
-    private List<Product> inDocks;
-    private List<Hobo> hobos;
-    private List<Product> stolenProducts;
-    private List<Cargo> ableCargos;
+    private final Dock dock;
 }
