@@ -4,19 +4,10 @@ public class Hobo implements Runnable {
     Hobo(String _name, long _stealingTime) {
         name = _name;
         stealingTime = _stealingTime;
-        eatingTime = 10000;
     }
 
     public String getName() {
         return name;
-    }
-
-    public long getStealingTime() {
-        return stealingTime;
-    }
-
-    public boolean IsCooker() {
-        return isCooker;
     }
 
     public void sendCook() {
@@ -26,16 +17,6 @@ public class Hobo implements Runnable {
     public void sendSteal() {
         isCooker = false;
     }
-
-    private void Cook() throws InterruptedException {
-        sleep(3000);
-        System.out.println("Food ready");
-    }
-
-    private void Eat() throws InterruptedException {
-        sleep(eatingTime);
-        System.out.println(name + " finished eating");
-    }
     synchronized private void Steal() throws InterruptedException {
         if (!isCooker) {
             System.out.println(name + " started stealing");
@@ -44,13 +25,12 @@ public class Hobo implements Runnable {
                 Controller.getInstance().getDock().stealCargo(this);
             }
         }
+            Controller.getInstance().getDock().SendReadySignal();
     }
 
     private final String name;
     private final long stealingTime;
-    private final long eatingTime;
     boolean isCooker = false;
-
     @Override
     public void run() {
         try {

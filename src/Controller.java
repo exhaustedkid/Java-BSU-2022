@@ -24,21 +24,17 @@ public class Controller {
     }
 
     private void GenerateShips() throws InterruptedException {
-            for (Ship ship : ships) {
-                Thread thread = new Thread(ship);
-                thread.start();
-                sleep(generatingTime);
-            }
+        for (Ship ship : ships) {
+            Thread thread = new Thread(ship);
+            thread.start();
+            sleep(generatingTime);
+        }
     }
 
     public void setShips(List<Ship> ships) throws InterruptedException {
         this.ships = ships;
         GenerateShips();
     }
-    synchronized public long GetTime() {
-        return timer.GetCurrentTime();
-    }
-
     public Dock getDock() {
         return dock;
     }

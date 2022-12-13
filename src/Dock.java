@@ -10,6 +10,7 @@ public class Dock {
     private void GenerateHobos() {
         if (firstProductArrived) {
             firstProductArrived = false;
+            ChooseCookers();
             for (Hobo hobo : hobos) {
                 Thread thread = new Thread(hobo);
                 thread.start();
@@ -17,8 +18,41 @@ public class Dock {
         }
     }
 
-    synchronized public boolean IsCrowdHungry() {
-        return isCrowdHungry;
+    public void SendReadySignal() throws InterruptedException { // need -2
+        ++readySignals;
+        if (readySignals == hobos.size()) {
+            StartCooking();
+        }
+    }
+
+    public void StartCooking() throws InterruptedException {
+        System.out.println("Crowd start eating");
+        sleep(10000);
+        for (int i = 0; i < hobosProducts.size(); ++i) {
+            hobosProducts.get(i).DecreaseCount(ingredients.get(i).getCount());
+        }
+        System.out.println("Crowd hungry!");
+        firstProductArrived = true;
+        readySignals = 0;
+        for (Product product : hobosProducts) {
+            System.out.println(product.getName() + " : " + product.getCount());
+        }
+        for (Hobo hobo : hobos) {
+            hobo.sendSteal();
+        }
+        GenerateHobos();
+    }
+
+    private void ChooseCookers() {
+        int num1 = 0;
+        int num2 = 0;
+        while (num1 == num2) {
+            num1 = (int) (Math.random() * (hobos.size()));
+            num2 = (int) (Math.random() * (hobos.size()));
+        }
+        hobos.get(num1).sendCook();
+        hobos.get(num2).sendCook();
+        System.out.println(hobos.get(num1).getName() + " and " + hobos.get(num2).getName() + " are cookers");
     }
 
     synchronized public void AddCargo(Cargo newCargo) {
@@ -69,5 +103,5 @@ public class Dock {
     private List<Product> hobosProducts;
     private List<Hobo> hobos;
     private boolean firstProductArrived = true;
-    private boolean isCrowdHungry = true;
+    private int readySignals = 0;
 }
