@@ -19,6 +19,10 @@ public class Product {
         count += value;
     }
 
+    public String toString() {
+        return name + "[" + count + "]";
+    }
+
 
     private long count;
     final private String name;

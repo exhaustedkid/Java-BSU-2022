@@ -87,5 +87,6 @@
             "count": 5
           }
 	],
-	"generating_time": 2000
+	"generating_time": 2000,
+	"eating_time": 10000
 }

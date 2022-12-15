@@ -1,5 +1,3 @@
-import java.util.List;
-
 import static java.lang.Thread.sleep;
 
 public class Ship implements Runnable {
@@ -33,12 +31,16 @@ public class Ship implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(Controller.getInstance().GetTimeInFormat() + " " + name + " ship started with " + cargo.getName() + " " + cargo.getCount());
+        Controller.getInstance().MakeInfoConsoleAndFileLog("+(" +
+                Controller.getInstance().GetTimeInFormat() +
+                ") " + name + " ship started with " + cargo.getName() + " " + cargo.getCount());
         try {
             SwimToTunnel();
             Controller.getInstance().AddShipToTunnel(this);
             if (!ableToJoinTunnel) {
-                System.out.println(Controller.getInstance().GetTimeInFormat() + " ship " + name + " drown");
+                Controller.getInstance().MakeWarnConsoleAndFileLog("+(" +
+                        Controller.getInstance().GetTimeInFormat() +
+                        ") " + name + " drown");
                 return;
             }
             SwimInTunnel();
@@ -51,18 +53,26 @@ public class Ship implements Runnable {
 
     private void SwimToDock() throws InterruptedException {
         sleep(7000);
-        System.out.println(Controller.getInstance().GetTimeInFormat() + " ship " + name + " got to dock");
+        Controller.getInstance().MakeInfoConsoleAndFileLog("+(" +
+                Controller.getInstance().GetTimeInFormat() +
+                ") " + "ship " + name + " got to dock");
         Controller.getInstance().getDock().AddCargo(cargo);
     }
 
     private void SwimInTunnel() throws InterruptedException {
-        System.out.println(Controller.getInstance().GetTimeInFormat() + " ship " + name + " in Tunnel");
+        Controller.getInstance().MakeInfoFileLog("+(" +
+                Controller.getInstance().GetTimeInFormat() +
+                ") " + "ship " + name + " got in tunnel");
         sleep(5000);
-        System.out.println(Controller.getInstance().GetTimeInFormat() + " ship " + name + " got out of Tunnel");
+        Controller.getInstance().MakeInfoFileLog("+(" +
+                Controller.getInstance().GetTimeInFormat() +
+                ") " + "ship " + name + " got out of tunnel");
     }
 
     private void SwimToTunnel() throws InterruptedException {
         sleep(5000);
-        System.out.println(Controller.getInstance().GetTimeInFormat() + " ship " + name + " got to Tunnel");
+        Controller.getInstance().MakeInfoFileLog("+(" +
+                Controller.getInstance().GetTimeInFormat() +
+                ") " + "ship " + name + " got to tunnel");
     }
 }

@@ -10,7 +10,7 @@ public class Timer {
         long current = System.currentTimeMillis() - startTime;
         String ms = Long.toString(current % 1000);
         String s = Long.toString(current / 1000);
-        return s + ":" + ms;
+        return s + "s" + ":" + ms + "ms";
     }
 
 

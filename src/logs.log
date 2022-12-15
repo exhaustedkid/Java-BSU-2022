@@ -1,0 +1,382 @@
+дек. 15, 2022 6:34:01 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(0s:19ms) Aurora ship started with bread 50
+дек. 15, 2022 6:34:03 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(2s:28ms) Viking ship started with cheese 70
+дек. 15, 2022 6:34:05 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(4s:35ms) Shark ship started with cheese 10
+дек. 15, 2022 6:34:06 PM Controller MakeInfoFileLog
+INFO: +(5s:84ms) ship Aurora got to tunnel
+дек. 15, 2022 6:34:06 PM Controller MakeInfoFileLog
+INFO: +(5s:85ms) ship Aurora got in tunnel
+дек. 15, 2022 6:34:07 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(6s:40ms) Rook ship started with sausage 50
+дек. 15, 2022 6:34:08 PM Controller MakeInfoFileLog
+INFO: +(7s:44ms) ship Viking got to tunnel
+дек. 15, 2022 6:34:08 PM Controller MakeInfoFileLog
+INFO: +(7s:45ms) ship Viking got in tunnel
+дек. 15, 2022 6:34:09 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(8s:56ms) Mayflower ship started with sausage 50
+дек. 15, 2022 6:34:10 PM Controller MakeInfoFileLog
+INFO: +(9s:52ms) ship Shark got to tunnel
+дек. 15, 2022 6:34:10 PM Controller MakeWarnConsoleAndFileLog
+WARNING: +(9s:53ms) Shark drown
+дек. 15, 2022 6:34:11 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(10s:67ms) Admiral ship started with ketchup 100
+дек. 15, 2022 6:34:11 PM Controller MakeInfoFileLog
+INFO: +(10s:99ms) ship Aurora got out of tunnel
+дек. 15, 2022 6:34:12 PM Controller MakeInfoFileLog
+INFO: +(11s:52ms) ship Rook got to tunnel
+дек. 15, 2022 6:34:12 PM Controller MakeInfoFileLog
+INFO: +(11s:53ms) ship Rook got in tunnel
+дек. 15, 2022 6:34:13 PM Controller MakeInfoFileLog
+INFO: +(12s:50ms) ship Viking got out of tunnel
+дек. 15, 2022 6:34:13 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(12s:81ms) Vivat ship started with ketchup 50
+дек. 15, 2022 6:34:14 PM Controller MakeInfoFileLog
+INFO: +(13s:65ms) ship Mayflower got to tunnel
+дек. 15, 2022 6:34:14 PM Controller MakeInfoFileLog
+INFO: +(13s:66ms) ship Mayflower got in tunnel
+дек. 15, 2022 6:34:16 PM Controller MakeInfoFileLog
+INFO: +(15s:78ms) ship Admiral got to tunnel
+дек. 15, 2022 6:34:16 PM Controller MakeWarnConsoleAndFileLog
+WARNING: +(15s:78ms) Admiral drown
+дек. 15, 2022 6:34:17 PM Controller MakeInfoFileLog
+INFO: +(16s:63ms) ship Rook got out of tunnel
+дек. 15, 2022 6:34:18 PM Controller MakeInfoFileLog
+INFO: +(17s:93ms) ship Vivat got to tunnel
+дек. 15, 2022 6:34:18 PM Controller MakeInfoFileLog
+INFO: +(17s:94ms) ship Vivat got in tunnel
+дек. 15, 2022 6:34:18 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(17s:109ms) ship Aurora got to dock
+дек. 15, 2022 6:34:18 PM Controller MakeInfoConsoleAndFileLog
+INFO: Brodyaga and Mujik are cookers
+дек. 15, 2022 6:34:18 PM Controller MakeWarnFileLog
+WARNING: +(17s:114ms) Mafioznic started stealing
+дек. 15, 2022 6:34:18 PM Controller MakeWarnFileLog
+WARNING: +(17s:114ms) Crutch started stealing
+дек. 15, 2022 6:34:18 PM Controller MakeWarnFileLog
+WARNING: +(17s:114ms) Vasya Brilliant started stealing
+дек. 15, 2022 6:34:19 PM Controller MakeInfoFileLog
+INFO: +(18s:79ms) ship Mayflower got out of tunnel
+дек. 15, 2022 6:34:20 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(19s:59ms) ship Viking got to dock
+дек. 15, 2022 6:34:20 PM Controller MakeWarnFileLog
+WARNING: +(19s:121ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:34:21 PM Controller MakeWarnFileLog
+WARNING: +(20s:129ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:34:23 PM Controller MakeInfoFileLog
+INFO: +(22s:105ms) ship Vivat got out of tunnel
+дек. 15, 2022 6:34:24 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(23s:70ms) ship Rook got to dock
+дек. 15, 2022 6:34:24 PM Controller MakeWarnFileLog
+WARNING: +(23s:133ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:34:24 PM Controller MakeWarnFileLog
+WARNING: +(23s:164ms) Crutch stolen 1 sausage
+дек. 15, 2022 6:34:25 PM Controller MakeWarnFileLog
+WARNING: +(24s:179ms) Crutch stolen 1 bread
+дек. 15, 2022 6:34:26 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(25s:84ms) ship Mayflower got to dock
+дек. 15, 2022 6:34:26 PM Controller MakeWarnFileLog
+WARNING: +(25s:146ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:34:26 PM Controller MakeWarnFileLog
+WARNING: +(25s:194ms) Crutch stolen 1 bread
+дек. 15, 2022 6:34:27 PM Controller MakeWarnFileLog
+WARNING: +(26s:207ms) Crutch stolen 1 bread
+дек. 15, 2022 6:34:28 PM Controller MakeWarnFileLog
+WARNING: +(27s:119ms) Mafioznic stolen 1 sausage
+дек. 15, 2022 6:34:28 PM Controller MakeWarnFileLog
+WARNING: +(27s:150ms) Vasya Brilliant stolen 1 bread
+дек. 15, 2022 6:34:28 PM Controller MakeWarnFileLog
+WARNING: +(27s:212ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:34:29 PM Controller MakeWarnFileLog
+WARNING: +(28s:227ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:34:30 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(29s:117ms) ship Vivat got to dock
+дек. 15, 2022 6:34:30 PM Controller MakeWarnFileLog
+WARNING: +(29s:164ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:34:30 PM Controller MakeWarnFileLog
+WARNING: +(29s:228ms) Crutch stolen 1 sausage
+дек. 15, 2022 6:34:31 PM Controller MakeWarnFileLog
+WARNING: +(30s:238ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:34:32 PM Controller MakeWarnFileLog
+WARNING: +(31s:175ms) Vasya Brilliant stolen 1 cheese
+дек. 15, 2022 6:34:32 PM Controller MakeWarnFileLog
+WARNING: +(31s:252ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:34:33 PM Controller MakeWarnFileLog
+WARNING: +(32s:127ms) Mafioznic stolen 1 cheese
+дек. 15, 2022 6:34:33 PM Controller MakeWarnFileLog
+WARNING: +(32s:267ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:34:34 PM Controller MakeWarnFileLog
+WARNING: +(33s:188ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:34:34 PM Controller MakeWarnFileLog
+WARNING: +(33s:282ms) Crutch stolen 1 sausage
+дек. 15, 2022 6:34:35 PM Controller MakeWarnFileLog
+WARNING: +(34s:294ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:34:36 PM Controller MakeWarnFileLog
+WARNING: +(35s:197ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:34:36 PM Controller MakeWarnFileLog
+WARNING: +(35s:308ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:34:37 PM Controller MakeWarnFileLog
+WARNING: +(36s:310ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:34:38 PM Controller MakeWarnFileLog
+WARNING: +(37s:139ms) Mafioznic stolen 1 ketchup
+дек. 15, 2022 6:34:38 PM Controller MakeWarnFileLog
+WARNING: +(37s:202ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:34:38 PM Controller MakeWarnFileLog
+WARNING: +(37s:311ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:34:39 PM Controller MakeWarnFileLog
+WARNING: +(38s:325ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:34:40 PM Controller MakeWarnFileLog
+WARNING: +(39s:214ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:34:40 PM Controller MakeWarnFileLog
+WARNING: +(39s:338ms) Crutch stolen 1 sausage
+дек. 15, 2022 6:34:41 PM Controller MakeWarnFileLog
+WARNING: +(40s:340ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:34:42 PM Controller MakeWarnFileLog
+WARNING: +(41s:219ms) Vasya Brilliant stolen 1 bread
+дек. 15, 2022 6:34:42 PM Controller MakeWarnFileLog
+WARNING: +(41s:344ms) Crutch stolen 1 sausage
+дек. 15, 2022 6:34:43 PM Controller MakeWarnFileLog
+WARNING: +(42s:151ms) Mafioznic stolen 1 sausage
+дек. 15, 2022 6:34:43 PM Controller MakeWarnFileLog
+WARNING: +(42s:353ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:34:44 PM Controller MakeWarnFileLog
+WARNING: +(43s:225ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:34:44 PM Controller MakeWarnFileLog
+WARNING: +(43s:364ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:34:45 PM Controller MakeWarnFileLog
+WARNING: +(44s:379ms) Crutch stolen 1 sausage
+дек. 15, 2022 6:34:46 PM Controller MakeWarnFileLog
+WARNING: +(45s:227ms) Vasya Brilliant stolen 1 bread
+дек. 15, 2022 6:34:46 PM Controller MakeWarnFileLog
+WARNING: +(45s:381ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:34:47 PM Controller MakeWarnFileLog
+WARNING: +(46s:395ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:34:48 PM Controller MakeWarnFileLog
+WARNING: +(47s:161ms) Mafioznic stolen 1 sausage
+дек. 15, 2022 6:34:48 PM Controller MakeWarnFileLog
+WARNING: +(47s:239ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:34:48 PM Controller MakeWarnFileLog
+WARNING: +(47s:410ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:34:49 PM Controller MakeWarnFileLog
+WARNING: +(48s:424ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:34:50 PM Controller MakeWarnFileLog
+WARNING: +(49s:250ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:34:50 PM Controller MakeWarnFileLog
+WARNING: +(49s:435ms) Crutch stolen 1 bread
+дек. 15, 2022 6:34:51 PM Controller MakeWarnFileLog
+WARNING: +(50s:439ms) Crutch stolen 1 sausage
+дек. 15, 2022 6:34:52 PM Controller MakeWarnFileLog
+WARNING: +(51s:260ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:34:52 PM Controller MakeWarnFileLog
+WARNING: +(51s:451ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:34:53 PM Controller MakeWarnFileLog
+WARNING: +(52s:170ms) Mafioznic stolen 1 sausage
+дек. 15, 2022 6:34:53 PM Controller MakeWarnFileLog
+WARNING: +(52s:454ms) Crutch stolen 1 sausage
+дек. 15, 2022 6:34:54 PM Controller MakeWarnFileLog
+WARNING: +(53s:276ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:34:54 PM Controller MakeWarnFileLog
+WARNING: +(53s:462ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:34:55 PM Controller MakeWarnFileLog
+WARNING: +(54s:474ms) Crutch stolen 1 bread
+дек. 15, 2022 6:34:56 PM Controller MakeWarnFileLog
+WARNING: +(55s:279ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:34:56 PM Controller MakeWarnFileLog
+WARNING: +(55s:475ms) Crutch stolen 1 sausage
+дек. 15, 2022 6:34:57 PM Controller MakeWarnFileLog
+WARNING: +(56s:491ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:34:58 PM Controller MakeWarnFileLog
+WARNING: +(57s:175ms) Mafioznic stolen 1 cheese
+дек. 15, 2022 6:34:58 PM Controller MakeWarnFileLog
+WARNING: +(57s:284ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:34:58 PM Controller MakeWarnFileLog
+WARNING: +(57s:502ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:34:59 PM Controller MakeWarnFileLog
+WARNING: +(58s:517ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:35:00 PM Controller MakeWarnFileLog
+WARNING: +(59s:298ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:35:00 PM Controller MakeWarnFileLog
+WARNING: +(59s:532ms) Crutch stolen 1 bread
+дек. 15, 2022 6:35:01 PM Controller MakeWarnFileLog
+WARNING: +(60s:545ms) Crutch stolen 1 bread
+дек. 15, 2022 6:35:01 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(60s:546ms) Crowd start eating
+дек. 15, 2022 6:35:02 PM Controller MakeWarnFileLog
+WARNING: +(61s:304ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:35:03 PM Controller MakeWarnFileLog
+WARNING: +(62s:178ms) Mafioznic stolen 1 cheese
+дек. 15, 2022 6:35:11 PM Controller MakeWarnConsoleAndFileLog
+WARNING: +(70s:556ms) Crowd hungry
+дек. 15, 2022 6:35:11 PM Controller MakeInfoConsoleAndFileLog
+INFO: Brodyaga and Mafioznic are cookers
+дек. 15, 2022 6:35:11 PM Controller MakeWarnFileLog
+WARNING: +(70s:560ms) Mujik started stealing
+дек. 15, 2022 6:35:11 PM Controller MakeWarnFileLog
+WARNING: +(70s:561ms) Crutch started stealing
+дек. 15, 2022 6:35:11 PM Controller MakeWarnFileLog
+WARNING: +(70s:560ms) Vasya Brilliant started stealing
+дек. 15, 2022 6:35:12 PM Controller MakeWarnFileLog
+WARNING: +(71s:569ms) Crutch stolen 1 bread
+дек. 15, 2022 6:35:13 PM Controller MakeWarnFileLog
+WARNING: +(72s:566ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:35:13 PM Controller MakeWarnFileLog
+WARNING: +(72s:582ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:35:14 PM Controller MakeWarnFileLog
+WARNING: +(73s:565ms) Mujik stolen 1 bread
+дек. 15, 2022 6:35:14 PM Controller MakeWarnFileLog
+WARNING: +(73s:596ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:35:15 PM Controller MakeWarnFileLog
+WARNING: +(74s:577ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:35:15 PM Controller MakeWarnFileLog
+WARNING: +(74s:608ms) Crutch stolen 1 bread
+дек. 15, 2022 6:35:16 PM Controller MakeWarnFileLog
+WARNING: +(75s:622ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:35:17 PM Controller MakeWarnFileLog
+WARNING: +(76s:575ms) Mujik stolen 1 sausage
+дек. 15, 2022 6:35:17 PM Controller MakeWarnFileLog
+WARNING: +(76s:591ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:35:17 PM Controller MakeWarnFileLog
+WARNING: +(76s:637ms) Crutch stolen 1 bread
+дек. 15, 2022 6:35:18 PM Controller MakeWarnFileLog
+WARNING: +(77s:640ms) Crutch stolen 1 bread
+дек. 15, 2022 6:35:19 PM Controller MakeWarnFileLog
+WARNING: +(78s:595ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:35:19 PM Controller MakeWarnFileLog
+WARNING: +(78s:642ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:35:20 PM Controller MakeWarnFileLog
+WARNING: +(79s:581ms) Mujik stolen 1 cheese
+дек. 15, 2022 6:35:20 PM Controller MakeWarnFileLog
+WARNING: +(79s:643ms) Crutch stolen 1 sausage
+дек. 15, 2022 6:35:21 PM Controller MakeWarnFileLog
+WARNING: +(80s:598ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:35:21 PM Controller MakeWarnFileLog
+WARNING: +(80s:645ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:35:22 PM Controller MakeWarnFileLog
+WARNING: +(81s:659ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:35:23 PM Controller MakeWarnFileLog
+WARNING: +(82s:593ms) Mujik stolen 1 cheese
+дек. 15, 2022 6:35:23 PM Controller MakeWarnFileLog
+WARNING: +(82s:609ms) Vasya Brilliant stolen 1 cheese
+дек. 15, 2022 6:35:23 PM Controller MakeWarnFileLog
+WARNING: +(82s:671ms) Crutch stolen 1 bread
+дек. 15, 2022 6:35:24 PM Controller MakeWarnFileLog
+WARNING: +(83s:674ms) Crutch stolen 1 sausage
+дек. 15, 2022 6:35:25 PM Controller MakeWarnFileLog
+WARNING: +(84s:621ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:35:25 PM Controller MakeWarnFileLog
+WARNING: +(84s:683ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:35:26 PM Controller MakeWarnFileLog
+WARNING: +(85s:607ms) Mujik stolen 1 ketchup
+дек. 15, 2022 6:35:26 PM Controller MakeWarnFileLog
+WARNING: +(85s:686ms) Crutch stolen 1 bread
+дек. 15, 2022 6:35:27 PM Controller MakeWarnFileLog
+WARNING: +(86s:635ms) Vasya Brilliant stolen 1 bread
+дек. 15, 2022 6:35:27 PM Controller MakeWarnFileLog
+WARNING: +(86s:697ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:35:28 PM Controller MakeWarnFileLog
+WARNING: +(87s:701ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:35:29 PM Controller MakeWarnFileLog
+WARNING: +(88s:619ms) Mujik stolen 1 cheese
+дек. 15, 2022 6:35:29 PM Controller MakeWarnFileLog
+WARNING: +(88s:650ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:35:29 PM Controller MakeWarnFileLog
+WARNING: +(88s:712ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:35:30 PM Controller MakeWarnFileLog
+WARNING: +(89s:726ms) Crutch stolen 1 sausage
+дек. 15, 2022 6:35:31 PM Controller MakeWarnFileLog
+WARNING: +(90s:663ms) Vasya Brilliant stolen 1 cheese
+дек. 15, 2022 6:35:31 PM Controller MakeWarnFileLog
+WARNING: +(90s:740ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:35:32 PM Controller MakeWarnFileLog
+WARNING: +(91s:619ms) Mujik stolen 1 ketchup
+дек. 15, 2022 6:35:32 PM Controller MakeWarnFileLog
+WARNING: +(91s:745ms) Crutch stolen 1 ketchup
+дек. 15, 2022 6:35:33 PM Controller MakeWarnFileLog
+WARNING: +(92s:678ms) Vasya Brilliant stolen 1 bread
+дек. 15, 2022 6:35:33 PM Controller MakeWarnFileLog
+WARNING: +(92s:756ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:35:34 PM Controller MakeWarnFileLog
+WARNING: +(93s:767ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:35:35 PM Controller MakeWarnFileLog
+WARNING: +(94s:623ms) Mujik stolen 1 sausage
+дек. 15, 2022 6:35:35 PM Controller MakeWarnFileLog
+WARNING: +(94s:685ms) Vasya Brilliant stolen 1 bread
+дек. 15, 2022 6:35:35 PM Controller MakeInfoConsoleAndFileLog
+INFO: +(94s:686ms) Crowd start eating
+дек. 15, 2022 6:35:35 PM Controller MakeWarnFileLog
+WARNING: +(94s:778ms) Crutch stolen 1 cheese
+дек. 15, 2022 6:35:38 PM Controller MakeWarnFileLog
+WARNING: +(97s:631ms) Mujik stolen 1 ketchup
+дек. 15, 2022 6:35:45 PM Controller MakeWarnConsoleAndFileLog
+WARNING: +(104s:691ms) Crowd hungry
+дек. 15, 2022 6:35:45 PM Controller MakeInfoConsoleAndFileLog
+INFO: Crutch and Brodyaga are cookers
+дек. 15, 2022 6:35:45 PM Controller MakeWarnFileLog
+WARNING: +(104s:692ms) Mujik started stealing
+дек. 15, 2022 6:35:45 PM Controller MakeWarnFileLog
+WARNING: +(104s:693ms) Mafioznic started stealing
+дек. 15, 2022 6:35:45 PM Controller MakeWarnFileLog
+WARNING: +(104s:693ms) Vasya Brilliant started stealing
+дек. 15, 2022 6:35:47 PM Controller MakeWarnFileLog
+WARNING: +(106s:702ms) Vasya Brilliant stolen 1 cheese
+дек. 15, 2022 6:35:48 PM Controller MakeWarnFileLog
+WARNING: +(107s:701ms) Mujik stolen 1 sausage
+дек. 15, 2022 6:35:49 PM Controller MakeWarnFileLog
+WARNING: +(108s:705ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:35:50 PM Controller MakeWarnFileLog
+WARNING: +(109s:695ms) Mafioznic stolen 1 ketchup
+дек. 15, 2022 6:35:51 PM Controller MakeWarnFileLog
+WARNING: +(110s:716ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:35:51 PM Controller MakeWarnFileLog
+WARNING: +(110s:716ms) Mujik stolen 1 cheese
+дек. 15, 2022 6:35:53 PM Controller MakeWarnFileLog
+WARNING: +(112s:717ms) Vasya Brilliant stolen 1 bread
+дек. 15, 2022 6:35:54 PM Controller MakeWarnFileLog
+WARNING: +(113s:728ms) Mujik stolen 1 ketchup
+дек. 15, 2022 6:35:55 PM Controller MakeWarnFileLog
+WARNING: +(114s:700ms) Mafioznic stolen 1 ketchup
+дек. 15, 2022 6:35:55 PM Controller MakeWarnFileLog
+WARNING: +(114s:731ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:35:57 PM Controller MakeWarnFileLog
+WARNING: +(116s:732ms) Mujik stolen 1 ketchup
+дек. 15, 2022 6:35:57 PM Controller MakeWarnFileLog
+WARNING: +(116s:732ms) Vasya Brilliant stolen 1 cheese
+дек. 15, 2022 6:35:59 PM Controller MakeWarnFileLog
+WARNING: +(118s:745ms) Vasya Brilliant stolen 1 cheese
+дек. 15, 2022 6:36:00 PM Controller MakeWarnFileLog
+WARNING: +(119s:714ms) Mafioznic stolen 1 bread
+дек. 15, 2022 6:36:00 PM Controller MakeWarnFileLog
+WARNING: +(119s:744ms) Mujik stolen 1 ketchup
+дек. 15, 2022 6:36:01 PM Controller MakeWarnFileLog
+WARNING: +(120s:749ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:36:03 PM Controller MakeWarnFileLog
+WARNING: +(122s:755ms) Mujik stolen 1 cheese
+дек. 15, 2022 6:36:03 PM Controller MakeWarnFileLog
+WARNING: +(122s:756ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:36:05 PM Controller MakeWarnFileLog
+WARNING: +(124s:720ms) Mafioznic stolen 1 cheese
+дек. 15, 2022 6:36:05 PM Controller MakeWarnFileLog
+WARNING: +(124s:767ms) Vasya Brilliant stolen 1 cheese
+дек. 15, 2022 6:36:06 PM Controller MakeWarnFileLog
+WARNING: +(125s:757ms) Mujik stolen 1 bread
+дек. 15, 2022 6:36:07 PM Controller MakeWarnFileLog
+WARNING: +(126s:781ms) Vasya Brilliant stolen 1 cheese
+дек. 15, 2022 6:36:09 PM Controller MakeWarnFileLog
+WARNING: +(128s:761ms) Mujik stolen 1 ketchup
+дек. 15, 2022 6:36:10 PM Controller MakeWarnFileLog
+WARNING: +(128s:793ms) Vasya Brilliant stolen 1 sausage
+дек. 15, 2022 6:36:10 PM Controller MakeWarnFileLog
+WARNING: +(129s:730ms) Mafioznic stolen 1 cheese
+дек. 15, 2022 6:36:12 PM Controller MakeWarnFileLog
+WARNING: +(130s:806ms) Vasya Brilliant stolen 1 bread
+дек. 15, 2022 6:36:12 PM Controller MakeWarnFileLog
+WARNING: +(131s:771ms) Mujik stolen 1 sausage
+дек. 15, 2022 6:36:14 PM Controller MakeWarnFileLog
+WARNING: +(132s:817ms) Vasya Brilliant stolen 1 ketchup
+дек. 15, 2022 6:36:15 PM Controller MakeWarnFileLog
+WARNING: +(134s:741ms) Mafioznic stolen 1 ketchup
+дек. 15, 2022 6:36:15 PM Controller MakeWarnFileLog
+WARNING: +(134s:774ms) Mujik stolen 1 cheese
+дек. 15, 2022 6:36:16 PM Controller MakeWarnFileLog
+WARNING: +(134s:820ms) Vasya Brilliant stolen 1 sausage

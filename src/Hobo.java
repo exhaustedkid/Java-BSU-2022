@@ -19,7 +19,9 @@ public class Hobo implements Runnable {
     }
     synchronized private void Steal() throws InterruptedException {
         if (!isCooker) {
-            System.out.println(name + " started stealing");
+            Controller.getInstance().MakeWarnFileLog("+(" +
+                    Controller.getInstance().GetTimeInFormat() +
+                    ") " + name + " started stealing");
             while (!Controller.getInstance().getDock().CheckCookingPossibility()) {
                 sleep(stealingTime);
                 Controller.getInstance().getDock().stealCargo(this);

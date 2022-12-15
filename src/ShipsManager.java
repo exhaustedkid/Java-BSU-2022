@@ -1,5 +1,4 @@
 import java.io.IOException;
-
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,15 +52,8 @@ public class ShipsManager {
             hobos.add(new Hobo((String) ((JSONObject) hobo).get("name"), (Long) ((JSONObject) hobo).get("stealing_time")));
         }
 
-        for (Ship s : ships) {
-            System.out.println(s.getName());
-            System.out.println(s.getCapacity());
-        }
-        for (Hobo h : hobos) {
-            System.out.println(h.getName());
-        }
-
         Controller controller = new Controller((Long) jObject.get("generating_time"));
+        controller.getDock().setEatingTime((Long) jObject.get("eating_time"));
         controller.setShips(ships);
         controller.getDock().setHobos(hobos);
         controller.getDock().setHobosProducts(hobosProducts);

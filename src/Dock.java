@@ -18,25 +18,31 @@ public class Dock {
         }
     }
 
-    public void SendReadySignal() throws InterruptedException { // need -2
+    public void SendReadySignal() throws InterruptedException {
         ++readySignals;
-        if (readySignals == hobos.size()) {
+        if (readySignals == hobos.size() - 2) {
             StartCooking();
         }
     }
 
     public void StartCooking() throws InterruptedException {
-        System.out.println("Crowd start eating");
-        sleep(10000);
+        Controller.getInstance().MakeInfoConsoleAndFileLog("+(" +
+                Controller.getInstance().GetTimeInFormat() +
+                ") " + "Crowd start eating");
+        sleep(eatingTime);
         for (int i = 0; i < hobosProducts.size(); ++i) {
             hobosProducts.get(i).DecreaseCount(ingredients.get(i).getCount());
         }
-        System.out.println("Crowd hungry!");
+        Controller.getInstance().MakeWarnConsoleAndFileLog("+(" +
+                Controller.getInstance().GetTimeInFormat() +
+                ") " + "Crowd hungry");
         firstProductArrived = true;
         readySignals = 0;
+        System.out.println("Hobos have:");
         for (Product product : hobosProducts) {
-            System.out.println(product.getName() + " : " + product.getCount());
+            System.out.print(product + " ");
         }
+        System.out.println("\n");
         for (Hobo hobo : hobos) {
             hobo.sendSteal();
         }
@@ -52,7 +58,8 @@ public class Dock {
         }
         hobos.get(num1).sendCook();
         hobos.get(num2).sendCook();
-        System.out.println(hobos.get(num1).getName() + " and " + hobos.get(num2).getName() + " are cookers");
+        Controller.getInstance().MakeInfoConsoleAndFileLog(hobos.get(num1).getName()
+                + " and " + hobos.get(num2).getName() + " are cookers");
     }
 
     synchronized public void AddCargo(Cargo newCargo) {
@@ -89,10 +96,18 @@ public class Dock {
         this.hobos = hobos;
     }
 
+    public void setEatingTime(long eatingTime) {
+        this.eatingTime = eatingTime;
+    }
+
     synchronized public void stealCargo(Hobo hobo) {
         int cargoNumber = (int) (Math.random() * (cargosInDocks.size()));
         if (cargosInDocks.get(cargoNumber).getCount() > 0) {
-            System.out.println(hobo.getName() + " stolen 1 " + cargosInDocks.get(cargoNumber).getName());
+            Controller.getInstance().MakeWarnFileLog("+(" +
+                    Controller.getInstance().GetTimeInFormat() +
+                    ") " + hobo.getName() +
+                    " stolen 1 " +
+                    cargosInDocks.get(cargoNumber).getName());
             hobosProducts.get(cargoNumber).IncreaseCount(1);
             cargosInDocks.get(cargoNumber).DecreaseCount(1);
         }
@@ -104,4 +119,5 @@ public class Dock {
     private List<Hobo> hobos;
     private boolean firstProductArrived = true;
     private int readySignals = 0;
+    private long eatingTime;
 }
